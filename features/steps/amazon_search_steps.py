@@ -30,3 +30,14 @@ def verify_search_result(context):
     actual_email_input_field = context.driver.find_element(By.CSS_SELECTOR, '#ap_email')
     assert expected_email_input_field == actual_email_input_field, f'Error, expected {expected_email_input_field} did not match actual {actual_email_input_field}'
 
+@when('Click Cart Icon')
+def search_on_amazon(context):
+    context.driver.find_element(By.ID, 'nav-cart').click()
+
+@then('Verify Cart is Empty')
+def verify_search_result(context):
+    expected_sign_in_header = 'Your Amazon Cart is empty'
+    actual_sign_in_header = context.driver.find_element(By.CSS_SELECTOR, 'div.a-row.sc-your-amazon-cart-is-empty').text
+    assert expected_sign_in_header == actual_sign_in_header, f'Error, expected {expected_sign_in_header} did not match actual {actual_sign_in_header}'
+
+
